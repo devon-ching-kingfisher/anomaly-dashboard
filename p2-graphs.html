@@ -7,6 +7,8 @@
   <link rel="icon" href="images/kf.png" type="image/x-icon">
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Datepicker CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet">
   <link rel="stylesheet" href="p2-graphs-styles.css">
 </head>
 <body>
@@ -14,59 +16,75 @@
 <div class="container-fluid p-0">
   <div class="row g-0" style="height:100vh;">
 
-    <!-- Left Sidebar -->
+    <!-- Left Sidebar with Datepicker at top -->
     <div class="col-12 col-md-3 col-lg-2 bg-light border-end p-3">
-      <h5 class="mb-3">Filters</h5>
-      
-      <!-- Dropdown 1 -->
-      <div class="mb-3">
-        <label for="dropdown1" class="form-label">Dropdown 1</label>
+      <h4 class="mb-4">Date</h4>
+
+      <!-- Date Range Picker -->
+      <div class="mb-4">
+        <label class="form-label">From</label>
+        <input type="text" id="datepicker-start" class="form-control mb-2" placeholder="DD/MM/YYYY" readonly>
+        <label class="form-label">To</label>
+        <input type="text" id="datepicker-end" class="form-control" placeholder="DD/MM/YYYY" readonly>
+      </div>
+
+      <h4 class="mb-4">Filters</h4>
+      <!-- Dropdowns preserved -->
+      <div class="mb-4">
+        <label for="dropdown1" class="form-label">Banner</label>
         <select id="dropdown1" class="form-select">
-          <option selected>Choose...</option>
-          <option>Option A</option>
-          <option>Option B</option>
+          <option selected>All</option>
+          <option>BDFR</option>
+          <option>BQIE</option>
+          <option>BQUK</option>
+          <option>CAFR</option>
+          <option>CAPL</option>
         </select>
       </div>
 
-      <!-- Dropdown 2 -->
-      <div class="mb-3">
-        <label for="dropdown2" class="form-label">Dropdown 2</label>
+      <div class="mb-4">
+        <label for="dropdown2" class="form-label">Event</label>
         <select id="dropdown2" class="form-select">
-          <option selected>Choose...</option>
-          <option>Option C</option>
-          <option>Option D</option>
+          <option selected>All</option>
+          <option>add_to_cart</option>
+          <option>add_to_wishlist</option>
+          <option>initiate_checkout</option>
+          <option>page_view</option>
         </select>
       </div>
 
-      <!-- Dropdown 3 -->
-      <div class="mb-3">
-        <label for="dropdown3" class="form-label">Dropdown 3</label>
+      <div class="mb-4">
+        <label for="dropdown3" class="form-label">Platform</label>
         <select id="dropdown3" class="form-select">
-          <option selected>Choose...</option>
-          <option>Option E</option>
-          <option>Option F</option>
+          <option selected>All</option>
+          <option>Web</option>
+          <option>Mobile</option>
+        </select>
+      </div>
+
+      <div class="mb-4">
+        <label for="dropdown4" class="form-label">Anomalous</label>
+        <select id="dropdown4" class="form-select">
+          <option selected>Unspecified</option>
+          <option>Anomalous data only</option>
+          <option>Within Normal Limits</option>
         </select>
       </div>
     </div>
 
-    <!-- Main Content -->
+    <!-- Main Content (unchanged) -->
     <div class="col-12 col-md-9 col-lg-10 d-flex flex-column">
 
       <!-- Top Banner -->
       <div class="d-flex justify-content-between align-items-center bg-primary text-white p-2">
-        <div>
-          <button class="btn btn-warning btn-sm" onclick="window.location.href='index.html'">Home</button>
-          <!-- Add more buttons here if needed -->
-        </div>
-        <div>
-          <!-- Right side banner space (optional) -->
-        </div>
+        <button class="btn btn-warning btn-sm" onclick="window.location.href='index.html'">Home</button>
+        <div></div>
       </div>
 
       <!-- Title -->
       <div class="p-3">
         <h2 class="mb-0">Measurement Anomaly Dashboard</h2>
-        <p class="text-muted mb-3">GA4 Data — Data extracted from BigQuery</p>
+        <p class="text-muted mb-3">GA4 Data — Extracted from BigQuery</p>
       </div>
 
       <!-- Table Placeholder -->
@@ -74,18 +92,21 @@
         <table class="table table-striped table-bordered">
           <thead>
             <tr>
-              <th>Column 1</th>
-              <th>Column 2</th>
-              <th>Column 3</th>
+              <th>Event Name</th>
+              <th>Anomaly Detected</th>
+              <th>Health Score</th>
+              <th>Event Importance Weight</th>
+              <th>Platform Coverage</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Example 1</td>
-              <td>Example 2</td>
-              <td>Example 3</td>
+              <td>add_to_cart</td>
+              <td>Yes</td>
+              <td>80%</td>
+              <td>P1</td>
+              <td>85%</td>
             </tr>
-            <!-- API data will go here later -->
           </tbody>
         </table>
       </div>
@@ -94,7 +115,21 @@
   </div>
 </div>
 
+<!-- jQuery (required for bootstrap-datepicker) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Datepicker JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<script>
+  $(document).ready(function(){
+    $('#datepicker-start, #datepicker-end').datepicker({
+      format: 'dd/mm/yyyy',
+      todayHighlight: true,
+      autoclose: true
+    }).datepicker('update', new Date());
+  });
+</script>
+
 </body>
 </html>
