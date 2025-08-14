@@ -4,45 +4,30 @@ html, body {
   height: 100%;
   width: 100%;
   overflow-x: hidden;
-  background-color: rgb(207, 207, 207);
+  background-color: rgb(55, 60, 92);
 }
 
 #content {
   height: 100vh;
-  width: 100vw; /* full viewport width */
+  width: 100vw;
   margin: 0;
   padding: 0;
 }
 
-.container-fluid, .row {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
+.central-image {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+  box-shadow: 0 0 40px rgba(0,0,0,0.4);
+  object-fit: contain;
 }
-
-
-.runner-left,
-.runner-right {
-  height: 100%;
-  background-image: url('images/pineforest.jpg');
-  background-color: rgb(48, 79, 106); /* backup if image does not render */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.runner-right {
-  transform: scaleX(-1);
-}
-
 
 #formContainer {
   padding: 40px;
   background: #3E7FC8;
   border-radius: 10px;
   box-shadow: 0 0 40px rgba(0,0,0,0.4);
-  width: 100%;
+  width: 90%;
   max-width: 700px;
 }
 
@@ -64,5 +49,3 @@ html, body {
   background-color: #ffce2d;
   color: rgb(35, 35, 35);
 }
-
-
