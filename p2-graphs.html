@@ -104,14 +104,8 @@
               <th>Platform Coverage</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>add_to_cart</td>
-              <td>Yes</td>
-              <td>80%</td>
-              <td>P1</td>
-              <td>85%</td>
-            </tr>
+          <tbody id="table-body">
+            <!-- Data will be injected here -->
           </tbody>
         </table>
       </div>
@@ -136,5 +130,37 @@
   });
 </script>
 
+<!-- MOCK API -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    fetch('mock-data.json')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then(data => {
+        const tableBody = document.getElementById('table-body');
+        tableBody.innerHTML = ''; // Clear any existing rows
+  
+        data.forEach(row => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td>${row.eventName}</td>
+            <td>${row.anomalyDetected}</td>
+            <td>${row.healthScore}</td>
+            <td>${row.eventImportance}</td>
+            <td>${row.platformCoverage}</td>
+          `;
+          tableBody.appendChild(tr);
+        });
+      })
+      .catch(error => {
+        console.error('Error loading mock data:', error);
+      });
+  });
+  </script>
+  
 </body>
 </html>

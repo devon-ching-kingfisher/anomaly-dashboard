@@ -1,0 +1,23 @@
+[
+    {
+      "eventName": "add_to_cart",
+      "anomalyDetected": "Yes",
+      "healthScore": "80%",
+      "eventImportance": "P2",
+      "platformCoverage": "85%"
+    },
+    {
+      "eventName": "page_view",
+      "anomalyDetected": "No",
+      "healthScore": "95%",
+      "eventImportance": "P1",
+      "platformCoverage": "100%"
+    },
+    {
+      "eventName": "initiate_checkout",
+      "anomalyDetected": "Yes",
+      "healthScore": "60%",
+      "eventImportance": "P1",
+      "platformCoverage": "75%"
+    }
+  ]
