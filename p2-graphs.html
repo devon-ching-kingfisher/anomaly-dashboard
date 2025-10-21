@@ -120,17 +120,11 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Datepicker JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-<script>
-  $(document).ready(function(){
-    $('#datepicker-start, #datepicker-end').datepicker({
-      format: 'dd/mm/yyyy',
-      todayHighlight: true,
-      autoclose: true
-    }).datepicker('update', new Date());
-  });
-</script>
+<script src="main.js"></script>
 
-<!-- MOCK API -->
+
+
+<!-- MOCK API --------- REMOVED AS IT CAUSED CONFLICT WITH main.js SCRIPT
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     fetch('mock-data.json')
@@ -159,8 +153,9 @@
       .catch(error => {
         console.error('Error loading mock data:', error);
       });
-  });
+  }); 
   </script>
+  -->
   
 </body>
 </html>
