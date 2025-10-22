@@ -133,7 +133,9 @@ document.addEventListener("DOMContentLoaded", () => {
             row.anomalyDetected,
             row.healthScore,
             row.eventImportance,
-            row.platformCoverage
+            row.platformCoverage,
+            row.eventHits,
+            row.completnessScore
           ]);
         });
 

@@ -5,19 +5,23 @@
     "anomalyDetected": "Yes",
     "healthScore": "82%",
     "eventImportance": "P1",
-    "platformCoverage": "87%",
+    "platformCoverage": "84%",
     "timestamp": "2025-10-08",
-    "platform": "web"
+    "platform": "web",
+    "eventHits": 224,
+    "completnessScore": "83%"
   },
   {
     "eventName": "page_view",
     "banner": "CAFR",
     "anomalyDetected": "No",
-    "healthScore": "96%",
+    "healthScore": "97%",
     "eventImportance": "P3",
     "platformCoverage": "99%",
     "timestamp": "2025-10-09",
-    "platform": "web"
+    "platform": "web",
+    "eventHits": 8976,
+    "completnessScore": "98%"
   },
   {
     "eventName": "initiate_checkout",
@@ -27,7 +31,9 @@
     "eventImportance": "P2",
     "platformCoverage": "75%",
     "timestamp": "2025-10-10",
-    "platform": "web"
+    "platform": "web",
+    "eventHits": 6,
+    "completnessScore": "72%"
   },
   {
     "eventName": "add_to_cart",
@@ -37,27 +43,33 @@
     "eventImportance": "P1",
     "platformCoverage": "87%",
     "timestamp": "2025-07-08",
-    "platform": "mobile"
+    "platform": "mobile",
+    "eventHits": 299,
+    "completnessScore": "85%"
   },
   {
     "eventName": "page_view",
     "banner": "BQUK",
     "anomalyDetected": "No",
-    "healthScore": "96%",
+    "healthScore": "95%",
     "eventImportance": "P3",
     "platformCoverage": "99%",
     "timestamp": "2025-10-16",
-    "platform": "mobile"
+    "platform": "mobile",
+    "eventHits": 789,
+    "completnessScore": "97%"
   },
   {
     "eventName": "page_view",
     "banner": "BDFR",
     "anomalyDetected": "No",
-    "healthScore": "96%",
+    "healthScore": "93%",
     "eventImportance": "P3",
     "platformCoverage": "99%",
     "timestamp": "2025-10-15",
-    "platform": "mobile"
+    "platform": "mobile",
+    "eventHits": 65,
+    "completnessScore": "96%"
   },
   {
     "eventName": "page_view",
@@ -67,7 +79,9 @@
     "eventImportance": "P3",
     "platformCoverage": "99%",
     "timestamp": "2025-10-09",
-    "platform": "mobile"
+    "platform": "mobile",
+    "eventHits": 5434,
+    "completnessScore": "97%"
   },
   {
     "eventName": "initiate_checkout",
@@ -77,6 +91,8 @@
     "eventImportance": "P2",
     "platformCoverage": "75%",
     "timestamp": "2025-10-10",
-    "platform": "mobile"
+    "platform": "mobile",
+    "eventHits": 156,
+    "completnessScore": "72%"
   }
 ]
