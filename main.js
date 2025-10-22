@@ -61,7 +61,17 @@ document.addEventListener("DOMContentLoaded", () => {
   }).datepicker('update');
 
   // -----------------------
-  // Load & filter data function
+  // Initialize DataTable once
+  // -----------------------
+  const dataTable = $('#dataTable').DataTable({
+    paging: false,
+    searching: false,
+    info: false,
+    ordering: true
+  });
+
+  // -----------------------
+  // Load and filter data function
   // -----------------------
   function loadData() {
     const fromStr = $('#datepicker-start').val();
@@ -73,10 +83,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const toDate = parsePickerDate(toStr);
 
     // Dropdown values
-    const selectedBanner = $('#dropdown1').val(); // All / CAFR / CAPL / etc.
-    const selectedEvent = $('#dropdown2').val();  // All / add_to_cart / page_view / etc.
-    const selectedPlatform = $('#dropdown3').val(); // All / Web / Mobile
-    const selectedAnomaly = $('#dropdown4').val(); // Unspecified / Anomalous data only / Within Normal Limits
+    const selectedBanner = $('#dropdown1').val();
+    const selectedEvent = $('#dropdown2').val();
+    const selectedPlatform = $('#dropdown3').val();
+    const selectedAnomaly = $('#dropdown4').val();
 
     fetch('mock-data.json')
       .then(r => {
@@ -84,7 +94,8 @@ document.addEventListener("DOMContentLoaded", () => {
         return r.json();
       })
       .then(data => {
-        tableBody.innerHTML = '';
+        // Clear old table rows using DataTables API
+        dataTable.clear();
 
         const filtered = data.filter(row => {
           const rowDate = parseJsonDate(row.timestamp);
@@ -109,25 +120,28 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         if (filtered.length === 0) {
-          tableBody.innerHTML = '<tr><td colspan="5" class="text-center">No results for selected filters</td></tr>';
+          tableBody.innerHTML = '<tr><td colspan="6" class="text-center">No results for selected filters</td></tr>';
+          dataTable.draw();
           return;
         }
 
+        // Add filtered rows using DataTables API
         filtered.forEach(row => {
-          const tr = document.createElement('tr');
-          tr.innerHTML = `
-            <td>${row.eventName}</td>
-            <td>${row.anomalyDetected}</td>
-            <td>${row.healthScore}</td>
-            <td>${row.eventImportance}</td>
-            <td>${row.platformCoverage}</td>
-          `;
-          tableBody.appendChild(tr);
+          dataTable.row.add([
+            row.eventName,
+            row.banner,
+            row.anomalyDetected,
+            row.healthScore,
+            row.eventImportance,
+            row.platformCoverage
+          ]);
         });
+
+        dataTable.draw();
       })
       .catch(err => {
         console.error("Error loading mock data:", err);
-        tableBody.innerHTML = '<tr><td colspan="5" class="text-center text-danger">Error loading data</td></tr>';
+        tableBody.innerHTML = '<tr><td colspan="6" class="text-center text-danger">Error loading data</td></tr>';
       });
   }
 
@@ -141,4 +155,5 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initial table load on page load
   // -----------------------
   loadData();
+
 });
